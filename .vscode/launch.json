@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "showcase",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspaceFolder}/packages/showcase/lib/main.dart"
+        },
+        {
+            "name": "payments_app (production entry point)",
+            "request": "launch",
+            "type": "dart",
+            "program": "${workspaceFolder}/packages/payments_app/lib/main.dart"
+        }
+    ]
+}

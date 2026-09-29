@@ -1,0 +1,58 @@
+name: mamo_workspace
+description: "Payment approval flow: the app, a mock bank, and a showcase host."
+publish_to: none
+
+environment:
+  sdk: ^3.12.2
+
+workspace:
+  - packages/payments_app
+  - packages/mock_bank
+  - packages/showcase
+dev_dependencies:
+  melos: ^8.9.0
+
+# Monorepo scripts: `fvm dart run melos run <script>` from the repo root.
+melos:
+  # Always the fvm-pinned Flutter, whatever is on PATH.
+  sdkPath: .fvm/flutter_sdk
+
+  scripts:
+    analyze:
+      description: Static analysis of every package; any lint fails it.
+      # `dart analyze`, not `flutter analyze`: the Flutter tool takes a global
+      # startup lock, so parallel runs print "waiting for lock" noise.
+      exec: dart analyze --fatal-infos
+
+    format:
+      description: Fails if any Dart source isn't formatted.
+      exec: dart format --set-exit-if-changed lib
+
+    test:
+      description: Tests (only the app has them; mocks are untested by design).
+      exec: flutter test --no-pub
+      packageFilters:
+        dirExists: [test]
+
+    codegen:
+      description: Regenerates freezed / json_serializable code.
+      exec: dart run build_runner build --delete-conflicting-outputs
+      packageFilters:
+        dependsOn: [build_runner]
+
+    build:showcase:
+      description: Release web build of the showcase (what gets deployed).
+      run: cd packages/showcase && flutter build web --wasm --release
+
+    deploy:showcase:
+      description: Builds the showcase and publishes it to Firebase Hosting.
+      steps:
+        - build:showcase
+        - firebase deploy --only hosting
+
+    verify:
+      description: Everything CI checks before a deploy.
+      steps:
+        - format
+        - analyze
+        - test
