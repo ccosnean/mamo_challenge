@@ -1,0 +1,45 @@
+name: showcase
+description: "Web host that runs the payments app in a device frame, with mock bank, biometrics and console modules around it."
+publish_to: none
+resolution: workspace
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  device_frame: ^1.4.0
+  flutter:
+    sdk: flutter
+  logging: ^1.3.0
+  mock_bank:
+    path: ../mock_bank
+  payments_app:
+    path: ../payments_app
+
+dev_dependencies:
+  very_good_analysis: ^10.3.0
+
+flutter:
+  uses-material-design: true
+
+  # The app is a dependency here, so its bundled fonts live under
+  # packages/payments_app/. Re-registering them under the plain family names
+  # lets the app's text styles resolve exactly as they do standalone.
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: packages/payments_app/fonts/Manrope-500.ttf
+          weight: 500
+        - asset: packages/payments_app/fonts/Manrope-600.ttf
+          weight: 600
+        - asset: packages/payments_app/fonts/Manrope-700.ttf
+          weight: 700
+        - asset: packages/payments_app/fonts/Manrope-800.ttf
+          weight: 800
+    - family: DMMono
+      fonts:
+        - asset: packages/payments_app/fonts/DMMono-Regular.ttf
+          weight: 400
+        - asset: packages/payments_app/fonts/DMMono-Medium.ttf
+          weight: 500
