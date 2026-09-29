@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          # The API is snake_case; Dart stays camelCase.
+          field_rename: snake
+          # Parsing errors name the offending key.
+          checked: true
