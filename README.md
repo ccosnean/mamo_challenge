@@ -2,8 +2,9 @@
 
 A Flutter take-home for Mamo. Payees send you payment requests. You approve or reject them.
 
-**Live demo:** _link added after the Firebase deploy_. Nothing to install.
+**Live demo: [mamo-challenge.web.app](https://mamo-challenge.web.app)**. Nothing to install.
 
+- Design canvas: [open](LINK_TO_DESIGN_CANVAS)
 - Spec: [`docs/CHALLENGE.md`](docs/CHALLENGE.md)
 - Domain model and ISO 20022 mapping: [`docs/DOMAIN.md`](docs/DOMAIN.md)
 
@@ -17,7 +18,7 @@ A Flutter take-home for Mamo. Payees send you payment requests. You approve or r
 
 ## Try it in one minute
 
-1. Tap **Sign in**. The demo account is filled in.
+1. Open the [live demo](https://mamo-challenge.web.app) and tap **Sign in**. The demo account is filled in.
 2. In the **Bank** panel, tap **Send payment request**. Within 5 s, a sheet opens over whatever screen you are on.
 3. Tap **Review with Face ID**. The **Biometrics** panel decides whether the simulated scan passes or fails.
 4. **Approve** takes you to Payments. **Reject** leaves you where you were.
@@ -42,7 +43,7 @@ Also try:
 
 ## Design
 
-Before any code, I drew every screen and state on a design canvas: Home, Payments, Accounts, Details, and each step of the approval sheet. The code followed it. The spec says the wireframe's look is a placeholder, so I designed my own.
+Before any code, I drew every screen and state on a [design canvas](LINK_TO_DESIGN_CANVAS): Home, Payments, Accounts, Details, and each step of the approval sheet. The code followed it. The spec says the wireframe's look is a placeholder, so I designed my own.
 
 **Look**
 
