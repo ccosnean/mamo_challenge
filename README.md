@@ -252,6 +252,7 @@ features/<feature>/
 - `freezed` is pinned to `3.2.6-dev.1`, the only version that works with the Dart 3.12 SDK constraint.
 
 ```sh
+fvm install                               # once per clone: links the pinned SDK for Melos
 fvm flutter pub get                       # the whole workspace
 fvm dart run melos run verify             # format + analyze + test
 fvm dart run melos run build:showcase     # release web build (what gets deployed)
